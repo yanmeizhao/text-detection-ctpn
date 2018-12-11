@@ -1,0 +1,20 @@
+Ctpn模型训练及导出
+0. 下载VGG预训练模型VGG_imagenet.npy，并放到data/pretrain/
+1. Setup步骤：
+	cd lib/utils
+	chmod +x make.sh
+	./make.sh
+2. Prepare data
+	1)先要把标注文本的xml由4个点的坐标改成8个点的坐标，然后进行split_label
+	2)cd lib/prepare_training_data
+	python split_label.py
+     3)split完后，生成训练数据格式：
+	python ToVoc.py
+    4)创建虚拟链接：
+	cd ../../data
+	ln -s TEXTVOC VOCdevkit2012
+3. 开始训练
+	python ./ctpn/train_net.py
+4. 模型导出 python ctpn/generate_pb.py
+5. 测试 pb: python ctpn/demo_pb.py   或  ckpt: python ctpn/demo.py
+
