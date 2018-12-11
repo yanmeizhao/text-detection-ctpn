@@ -3,9 +3,9 @@ import numpy as np
 import math
 import cv2 as cv
 
-path = '/media/D/code/OCR/text-detection-ctpn/data/mlt_english+chinese/image'
-gt_path = '/media/D/code/OCR/text-detection-ctpn/data/mlt_english+chinese/label'
-out_path = 're_image'
+path = '/Users/df/GitProject/text-detection-ctpn/lib/prepare_training_data/JPEGImages/'
+gt_path = '/Users/df/GitProject/text-detection-ctpn/lib/prepare_training_data/Txts/'
+out_path = 're_image/'
 if not os.path.exists(out_path):
     os.makedirs(out_path)
 files = os.listdir(path)

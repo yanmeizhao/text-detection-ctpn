@@ -13,7 +13,7 @@ if __name__ == '__main__':
     cfg_from_file('ctpn/text.yml')
     print('Using config:')
     pprint.pprint(cfg)
-    imdb = get_imdb('voc_2007_trainval')
+    imdb = get_imdb('voc_2012_trainval')
     print('Loaded dataset `{:s}` for training'.format(imdb.name))
     roidb = get_training_roidb(imdb)
 

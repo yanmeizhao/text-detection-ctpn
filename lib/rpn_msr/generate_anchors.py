@@ -23,13 +23,17 @@ def scale_anchor(anchor, h, w):
 
 def generate_anchors(base_size=16, ratios=[0.5, 1, 2],
                      scales=2**np.arange(3, 6)):
-    heights = [11, 16, 23, 33, 48, 68, 97, 139, 198, 283]
+    # heights = [11, 16, 23, 33, 48, 68, 97, 139, 198, 283]
     widths = [16]
+    # heights = [4, 9, 17, 23, 33, 47, 61, 97, 131, 161]
+    heights = [6, 7, 8, 10, 12, 15, 20, 28, 37, 50]
+    # widths = [4]
     sizes = []
     for h in heights:
         for w in widths:
             sizes.append((h, w))
     return generate_basic_anchors(sizes)
+
 
 if __name__ == '__main__':
     import time

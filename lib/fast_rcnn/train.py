@@ -70,7 +70,7 @@ class SolverWrapper(object):
         # import tensorflow.python.ops.gen_logging_ops as logging_ops
         from tensorflow.python.ops import gen_logging_ops
         from tensorflow.python.framework import ops as _ops
-        log_image = gen_logging_ops._image_summary(log_image_name, tf.expand_dims(log_image_data, 0), max_images=1)
+        log_image = gen_logging_ops.image_summary(log_image_name, tf.expand_dims(log_image_data, 0), max_images=1)
         _ops.add_to_collection(_ops.GraphKeys.SUMMARIES, log_image)
         # log_image = tf.summary.image(log_image_name, tf.expand_dims(log_image_data, 0), max_outputs=1)
         return log_image, log_image_data, log_image_name
@@ -218,8 +218,9 @@ def train_net(network, imdb, roidb, output_dir, log_dir, pretrained_model=None, 
     """Train a Fast R-CNN network."""
 
     config = tf.ConfigProto(allow_soft_placement=True)
-    config.gpu_options.allocator_type = 'BFC'
-    config.gpu_options.per_process_gpu_memory_fraction = 0.75
+    config.gpu_options.allow_growth = True
+    # config.gpu_options.allocator_type = 'BFC'
+    # config.gpu_options.per_process_gpu_memory_fraction = 0.75
     with tf.Session(config=config) as sess:
         sw = SolverWrapper(sess, network, imdb, roidb, output_dir, logdir= log_dir, pretrained_model=pretrained_model)
         print('Solving...')

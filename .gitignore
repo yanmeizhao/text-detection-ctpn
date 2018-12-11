@@ -13,3 +13,10 @@ checkpoints/
 *.so
 *.swp
 *.pb
+data/*
+.DS_Store
+lib/pre
+lib/prepare_training_data/
+
+
+
